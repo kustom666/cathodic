@@ -42,19 +42,19 @@ The data tied to the stream can now be accessed by using the accessors : if you 
 ```
 Here are all the data you can access at the moment : 
 
-*online : boolean - True if the stream is online, false otherwise
-*account_name : string - Contains the account name from the provided url
-*thumbnail_address : string - Contains the url of the stream's preview thumbnail (will soon change to a new thumbnail object)
-*embed : string - Contains the html embed code for the twitch tv player which will play the stream's livestream
-*viewers : integer - Contains the number of people currently watching the stream (when the TwitchData object was created!)
-*entry_point : string - Contains the entry point to the api (for future upgrades of the gem, to support multiple providers)
-*url : string - Contains the url to the twitch.tv stream page
-*game : string - Contains the game currently played on the stream (updated by the streamer, might not be accurate)
-*status : string - Contains the status of the stream, a title displayed on top of the embed which describes the current activity on screen (updated by the streamer, might not be accurate)
-*logo : string - Contains the url of the stream's logo
-*banner : string - Contains the url of the stream's banner
-*stream_name : string - The casse sensitive stream name (example : account_name is kustomgames and stream_name is KustomGames)
-*chat_embed : string - Conatains the html code used to pop out the stream's chat (incoming)
+* online : boolean - True if the stream is online, false otherwise
+* account_name : string - Contains the account name from the provided url
+* thumbnail_address : string - Contains the url of the stream's preview thumbnail (will soon change to a new thumbnail object)
+* embed : string - Contains the html embed code for the twitch tv player which will play the stream's livestream
+* viewers : integer - Contains the number of people currently watching the stream (when the TwitchData object was created!)
+* entry_point : string - Contains the entry point to the api (for future upgrades of the gem, to support multiple providers)
+* url : string - Contains the url to the twitch.tv stream page
+* game : string - Contains the game currently played on the stream (updated by the streamer, might not be accurate)
+* status : string - Contains the status of the stream, a title displayed on top of the embed which describes the current activity on screen (updated by the streamer, might not be accurate)
+* logo : string - Contains the url of the stream's logo
+* banner : string - Contains the url of the stream's banner
+* stream_name : string - The casse sensitive stream name (example : account_name is kustomgames and stream_name is KustomGames)
+* chat_embed : string - Conatains the html code used to pop out the stream's chat (incoming)
 
 
 
