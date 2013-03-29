@@ -41,6 +41,7 @@ The data tied to the stream can now be accessed by using the accessors : if you 
 	puts data.viewers
 ```
 Here are all the data you can access at the moment : 
+
 *online : boolean - True if the stream is online, false otherwise
 *account_name : string - Contains the account name from the provided url
 *thumbnail_address : string - Contains the url of the stream's preview thumbnail (will soon change to a new thumbnail object)
