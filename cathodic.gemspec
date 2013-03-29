@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.version     = Cathodic::VERSION
   s.authors     = ["Paul Forti"]
   s.email       = ["paul@itsbi.fr"]
-  s.homepage    = ""
+  s.homepage    = "https://github.com/kustom666/cathodic"
   s.summary     = "Gets a twitch.tv stream's info from the api"
   s.description = "Cathodic helps users retreiving the data from a twitch tv stream, such as the number of viewers, 
                    a preview thumbnail, the embed code, the status etc from the twitch channel's url"
