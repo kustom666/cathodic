@@ -1,11 +1,12 @@
- #require "cathodic/version"
+require "cathodic/version"
 require 'json'
 require 'open-uri'
 require 'openssl'
+require "cathodic/thumbnail"
 
 module Cathodic
   class TwitchData
-  	attr_accessor :account_name, :online, :thumbnail_address, :embed, :viewers, :entry_point, :url, :game, :status, :logo, :banner, :stream_name, :chat_embed
+  	attr_accessor :account_name, :online, :thumbnail, :embed, :viewers, :entry_point, :url, :game, :status, :logo, :banner, :stream_name, :chat_embed
 
   	def initialize(url)
   		@entry_point = "https://api.twitch.tv/kraken"
@@ -37,7 +38,7 @@ module Cathodic
   			stream = parsed_answer.fetch("stream")
   			channel = stream.fetch("channel")
   			
-  			@thumbnail_address = stream.fetch("preview")["medium"]
+  			@thumbnail = Cathodic::Thumbnail.new(stream)
   			@game = stream["game"]
   			@viewers = stream["viewers"]
 
