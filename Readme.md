@@ -1,6 +1,6 @@
 Cathodic
 ================================
-
+[![Dependency Status](https://gemnasium.com/kustom666/cathodic.png)](https://gemnasium.com/kustom666/cathodic)
 Cathodic was at first a module created for one of the websites I worked on. 
 I needed a way to easily access the data tied to a twitch.tv stream, such as the state of the stream (online or offine, thus the boolean), the number of viewers, the stream's status, etc.
 
