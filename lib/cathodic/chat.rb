@@ -27,7 +27,7 @@ module Cathodic
 		def generate_links
 			@embed = "http://twitch.tv/chat/embed?channel="+@account_name
 			@popout = @embed + "&popout_chat=true"
-			@popout_link = "<a href=\""+@popout"\" target=\"_new\">Pop-Out</a>"
+			@popout_link = "<a href=\""+@popout+"\" target=\"_new\">Pop-Out</a>"
 		end
 
 	end

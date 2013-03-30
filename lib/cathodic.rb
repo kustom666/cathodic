@@ -7,10 +7,11 @@ require 'json'
 require 'open-uri'
 require 'openssl'
 require "cathodic/thumbnail"
+require "cathodic/chat"
 
 module Cathodic
   class TwitchData
-  	attr_accessor :account_name, :online, :thumbnail, :embed, :viewers, :entry_point, :url, :game, :status, :logo, :banner, :stream_name, :chat_embed
+  	attr_accessor :account_name, :online, :thumbnail, :embed, :viewers, :entry_point, :url, :game, :status, :logo, :banner, :stream_name, :chat
 
   	def initialize(url)
   		@entry_point = "https://api.twitch.tv/kraken"
@@ -53,7 +54,7 @@ module Cathodic
   			@stream_name = channel["display_name"]
 
   			@embed =  "<object type=\"application/x-shockwave-flash\" height=\"360\" width=\"640\" id=\"live_embed_player_flash\" data=\"http://en.twitch.tv/widgets/live_embed_player.swf?channel="+@account_name+"\" bgcolor=\"#000000\"><param name=\"allowFullScreen\" value=\"true\" /><param name=\"allowScriptAccess\" value=\"always\" /><param name=\"allowNetworking\" value=\"all\" /><param name=\"movie\" value=\"http://en.twitch.tv/widgets/live_embed_player.swf\" /><param name=\"flashvars\" value=\"hostname=en.twitch.tv&channel="+@account_name+"&auto_play=true&start_volume=25\" /></object>"
-  		  @chat_embed = "http://twitch.tv/chat/embed?channel="+@account_name+"&popout_chat=true"
+  		  @chat_embed = Cathodic::Chat.new(@account_name)
       end
   	end
   end
