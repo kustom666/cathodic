@@ -1,3 +1,7 @@
+#Cathodic takes the url of a twitch.tv stream and fetch every data tied to it, such as the status, logo, numbed of viewers, thumnails and game
+#Author::Paul Forti
+#License::MIT
+
 require "cathodic/version"
 require 'json'
 require 'open-uri'
