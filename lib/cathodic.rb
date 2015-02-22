@@ -11,15 +11,32 @@ require "cathodic/chat"
 
 module Cathodic
   class TwitchData
-  	attr_accessor :account_name, :online, :thumbnail, :embed, :viewers, :entry_point, :url, :game, :status, :logo, :banner, :stream_name, :chat
+  	attr_accessor :account_name, :online, :thumbnail, :embed, :viewers, :entry_point, :url, :game, :status, :logo, :banner, :stream_name, :chat, :embed_width, :embed_height
 
-  	def initialize(url)
+  	def initialize(url, embed_width = 640, embed_height = 360)
   		@entry_point = "https://api.twitch.tv/kraken"
   		@url = url
   		extract_account
   		@query_point = @entry_point + "/streams/" + @account_name
+      @embed_width = embed_width
+      @embed_height = embed_height
   		extract_data
   	end
+
+    def refresh_data
+      answer_string = open(@query_point).read
+      parsed_answer = JSON.parse(answer_string)
+
+      if parsed_answer["stream"] == nil
+        @online = false
+      else
+        @online = true
+
+        @game = stream["game"]
+        @viewers = stream["viewers"]
+        @status = channel["status"]
+      end
+    end
 
   	private
   	def extract_account
@@ -53,7 +70,7 @@ module Cathodic
   			@banner = channel["banner"]
   			@stream_name = channel["display_name"]
 
-  			@embed =  "<object type=\"application/x-shockwave-flash\" height=\"360\" width=\"640\" id=\"live_embed_player_flash\" data=\"http://en.twitch.tv/widgets/live_embed_player.swf?channel="+@account_name+"\" bgcolor=\"#000000\"><param name=\"allowFullScreen\" value=\"true\" /><param name=\"allowScriptAccess\" value=\"always\" /><param name=\"allowNetworking\" value=\"all\" /><param name=\"movie\" value=\"http://en.twitch.tv/widgets/live_embed_player.swf\" /><param name=\"flashvars\" value=\"hostname=en.twitch.tv&channel="+@account_name+"&auto_play=true&start_volume=25\" /></object>"
+  			@embed =  "<object bgcolor='#000000' data='//www-cdn.jtvnw.net/swflibs/TwitchPlayer.swf' height='#{@embed_height}' id='clip_embed_player_flash' type='application/x-shockwave-flash' width='#{@embed_width}'><param name='movie' value='//www-cdn.jtvnw.net/swflibs/TwitchPlayer.swf' /><param name='allowScriptAccess' value='always' /><param name='allowNetworking' value='all' /><param name='allowFullScreen' value='true' /><param name='flashvars' value='channel=#{@channel}&start_volume=25&auto_play=true' /></object>"
   		  @chat_embed = Cathodic::Chat.new(@account_name)
       end
   	end
