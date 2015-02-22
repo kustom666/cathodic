@@ -3,6 +3,7 @@
 #License::MIT
 
 require "cathodic/version"
+require 'iconv'
 require 'json'
 require 'open-uri'
 require 'openssl'
@@ -31,7 +32,8 @@ module Cathodic
         @online = false
       else
         @online = true
-
+        stream = parsed_answer.fetch("stream")
+        channel = stream.fetch("channel")
         @game = stream["game"]
         @viewers = stream["viewers"]
         @status = channel["status"]
